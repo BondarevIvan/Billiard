@@ -1,2 +1,0 @@
-/usr/bin/ar qc libScene.a  CMakeFiles/Scene.dir/Scene.cpp.o CMakeFiles/Scene.dir/Table.cpp.o CMakeFiles/Scene.dir/Thing3D.cpp.o
-/usr/bin/ranlib libScene.a

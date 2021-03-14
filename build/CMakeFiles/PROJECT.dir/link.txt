@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++17 -lGL -lGLU -lglut -lgtest  -rdynamic CMakeFiles/PROJECT.dir/Main.cpp.o  -o PROJECT -lstdc++fs -lGL -lglut -lXi Scene/libScene.a Geometry/libGeometry.a -lstdc++fs 
