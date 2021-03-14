@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGeometry.a  CMakeFiles/Geometry.dir/Matrix.cpp.o CMakeFiles/Geometry.dir/Plane.cpp.o CMakeFiles/Geometry.dir/Primitive.cpp.o CMakeFiles/Geometry.dir/Rectangle3D.cpp.o CMakeFiles/Geometry.dir/Vector.cpp.o
+/usr/bin/ranlib libGeometry.a

@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Scene/../Geometry/Plane.h
+Vector.h
+../Scene/../Geometry/Vector.h
+functional
+-
+
+../Scene/../Geometry/Primitive.h
+Vector.h
+../Scene/../Geometry/Vector.h
+
+../Scene/../Geometry/Rectangle3D.h
+Plane.h
+../Scene/../Geometry/Plane.h
+Primitive.h
+../Scene/../Geometry/Primitive.h
+
+../Scene/../Geometry/Vector.h
+array
+-
+vector
+-
+cassert
+-
+cmath
+-
+iostream
+-
+
+/home/bondarevivan/Github/Billiard/Main.cpp
+Geometry/Rectangle3D.h
+-
+iostream
+-
+

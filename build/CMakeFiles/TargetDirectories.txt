@@ -1,0 +1,9 @@
+/home/bondarevivan/Github/Billiard/build/CMakeFiles/rebuild_cache.dir
+/home/bondarevivan/Github/Billiard/build/CMakeFiles/PROJECT.dir
+/home/bondarevivan/Github/Billiard/build/CMakeFiles/edit_cache.dir
+/home/bondarevivan/Github/Billiard/build/Scene/CMakeFiles/rebuild_cache.dir
+/home/bondarevivan/Github/Billiard/build/Scene/CMakeFiles/Scene.dir
+/home/bondarevivan/Github/Billiard/build/Scene/CMakeFiles/edit_cache.dir
+/home/bondarevivan/Github/Billiard/build/Geometry/CMakeFiles/rebuild_cache.dir
+/home/bondarevivan/Github/Billiard/build/Geometry/CMakeFiles/Geometry.dir
+/home/bondarevivan/Github/Billiard/build/Geometry/CMakeFiles/edit_cache.dir
