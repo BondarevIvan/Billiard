@@ -31,7 +31,9 @@ namespace Kinematics_NS
         Higher  = 1 << 0,
         Below   = 1 << 1,
         OnLeft  = 1 << 2,
-        OnRight = 1 << 3
+        OnRight = 1 << 3,
+        UpDown = Higher | Below,
+        LeftRight = OnLeft | OnRight
     };
 
     class Table2D

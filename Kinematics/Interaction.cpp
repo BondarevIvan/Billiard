@@ -41,8 +41,8 @@ namespace Kinematics_NS
         const auto collisionDist = (i_ball2.position() - i_ball1.position()).mod() - DiamBall;
         if (collisionDist > 0)
             return;
-        i_ball1.position() += dir21 * (collisionDist / 2 + Eps);
-        i_ball2.position() += dir12 * (collisionDist / 2 + Eps);
+        i_ball1.position() += dir12 * (collisionDist / 2);
+        i_ball2.position() += dir21 * (collisionDist / 2);
     }
 
     void collisionBalls(Ball2D& i_ball1, Ball2D& i_ball2)
@@ -60,7 +60,7 @@ namespace Kinematics_NS
         double i_leftOfRange, double i_rightOfRange)
     {
         double left = i_leftOfRange;
-        double right = i_leftOfRange;
+        double right = i_rightOfRange;
         const auto translation = [=](double length)
         {
             return io_point + i_direction * length;
@@ -78,27 +78,43 @@ namespace Kinematics_NS
         io_point = translation(right);
     }
 
+    void changeDirection(const Table2D& i_table, Ball2D& i_ball)
+    {
+        const Math_NS::Vector2d diag({ 
+            Kinematics_NS::RadiusBall,
+            Kinematics_NS::RadiusBall });
+        int collisionType = 0;
+        collisionType |= i_table.positionPoint(i_ball.position() - diag);
+        collisionType |= i_table.positionPoint(i_ball.position() + diag);        
+        if (collisionType & PositionPointAboutRect::UpDown)
+            i_ball.move()[1] *= -1;
+        if (collisionType & PositionPointAboutRect::LeftRight)
+            i_ball.move()[0] *= -1;
+    }
+
     void collisionWithTable(const Table2D& i_table, Ball2D& i_ball)
     {
-        int position = isCollision(i_table, i_ball);
+        changeDirection(i_table, i_ball);
         std::unordered_map<PositionPointAboutRect, Math_NS::Vector2d> ShakeDirs = {
             { PositionPointAboutRect::Below, Math_NS::Vector2d({ 0, 1 }) },
             { PositionPointAboutRect::Higher, Math_NS::Vector2d({ 0, -1 }) },
             { PositionPointAboutRect::OnLeft, Math_NS::Vector2d({ 1, 0 }) },
             { PositionPointAboutRect::OnRight, Math_NS::Vector2d({ -1, 0 }) }
         };
-        const auto resolveCollision = [&](PositionPointAboutRect conflict)
+        const Math_NS::Vector2d diag({ 
+            Kinematics_NS::RadiusBall,
+            Kinematics_NS::RadiusBall });
+        const auto resolveCollision = [&](PositionPointAboutRect conflict, double dirDiag)
         {
-            if (!(position & conflict)) return;
             shake(i_ball.position(), [=](const Math_NS::Vector2d& pos)
             {
-                return !(i_table.positionPoint(pos) & conflict);
+                return !(i_table.positionPoint(pos + diag * dirDiag) & conflict);
             }, ShakeDirs[conflict], 0., DiamBall);
         };
-        resolveCollision(PositionPointAboutRect::Below);
-        resolveCollision(PositionPointAboutRect::Higher);
-        resolveCollision(PositionPointAboutRect::OnLeft);
-        resolveCollision(PositionPointAboutRect::OnRight);
+        resolveCollision(PositionPointAboutRect::Below, -1);
+        resolveCollision(PositionPointAboutRect::Higher, 1);
+        resolveCollision(PositionPointAboutRect::OnLeft, -1);
+        resolveCollision(PositionPointAboutRect::OnRight, 1);
     }
 
     void moveBall(Ball2D& io_ball)

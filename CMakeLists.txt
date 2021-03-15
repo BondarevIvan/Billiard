@@ -19,7 +19,7 @@ link_libraries(stdc++fs)
 #Добавляем в сборку исполняемые файлы
 add_executable(${PROJECT_NAME} ${_SOURSCES})
 
-set(Directories Scene Geometry)
+set(Directories Scene Kinematics Geometry)
 
 #Добавляем поддиректорию для поиска подфайла Cmake
 foreach(directory IN LISTS Directories)
@@ -30,4 +30,4 @@ endforeach()
 target_link_libraries(${PROJECT_NAME}
                       ${OPENGL_gl_LIBRARY}
                       ${GLUT_LIBRARIES}
-                       Scene Geometry)
+                       Scene Kinematics Geometry)
